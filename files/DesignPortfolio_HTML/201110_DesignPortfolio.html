@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta name="description" content="" />
+    <title>jim.turner/studio logos</title>
+    <style>
+      body {
+        transform: scale(0.85);
+        /* Ensures the scaling starts from the top-left corner */
+
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+       /* Media query for tablets (iPads) */
+       @media (max-width: 768px) {
+        body {
+          transform: scale(0.9);
+        }
+      }
+
+      /* Media query for mobile phones */
+      @media (max-width: 480px) {
+        body {
+          transform: scale(1);
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+      //      <![CDATA[
+      var images = new Array(13);
+      images[0] = "201110_DesignPortfolio_files/201110_DesignPortfolio.001.png";
+      images[1] = "201110_DesignPortfolio_files/201110_DesignPortfolio.002.png";
+      images[2] = "201110_DesignPortfolio_files/201110_DesignPortfolio.003.png";
+      images[3] = "201110_DesignPortfolio_files/201110_DesignPortfolio.004.png";
+      images[4] = "201110_DesignPortfolio_files/201110_DesignPortfolio.005.png";
+      images[5] = "201110_DesignPortfolio_files/201110_DesignPortfolio.006.png";
+      images[6] = "201110_DesignPortfolio_files/201110_DesignPortfolio.007.png";
+      images[7] = "201110_DesignPortfolio_files/201110_DesignPortfolio.008.png";
+      images[8] = "201110_DesignPortfolio_files/201110_DesignPortfolio.009.png";
+      images[9] = "201110_DesignPortfolio_files/201110_DesignPortfolio.010.png";
+      images[10] =
+        "201110_DesignPortfolio_files/201110_DesignPortfolio.011.png";
+      images[11] =
+        "201110_DesignPortfolio_files/201110_DesignPortfolio.012.png";
+      images[12] =
+        "201110_DesignPortfolio_files/201110_DesignPortfolio.013.png";
+      var index = 0;
+      function WindowLoaded(evt) {
+        document.body.onselectstart = function () {
+          return false;
+        };
+      }
+      function Step(i) {
+        GoTo(index + i);
+      }
+      function GoTo(newIndex) {
+        if (newIndex >= 0 && newIndex < images.length) {
+          index = newIndex;
+          document.Slideshow.src = images[index];
+        }
+      }
+      //      ]]>
+    </script>
+  </head>
+  <body bgcolor="black" onload="WindowLoaded(event);">
+    <p align="center">
+      <br />
+      <br />
+      <img
+        name="Slideshow"
+        alt=""
+        src="201110_DesignPortfolio_files/201110_DesignPortfolio.001.png"
+        onclick="Step(1)"
+      />
+      <br />
+      <br />
+      <input
+        type="image"
+        src="201110_DesignPortfolio_files/home.png"
+        onclick="GoTo(0)"
+      />
+      &nbsp;&nbsp;&nbsp;
+      <input
+        type="image"
+        src="201110_DesignPortfolio_files/prev.png"
+        onclick="Step(-1)"
+      />
+      <input
+        type="image"
+        src="201110_DesignPortfolio_files/next.png"
+        onclick="Step(1)"
+      />
+    </p>
+  </body>
+</html>

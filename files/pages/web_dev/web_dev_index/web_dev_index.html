@@ -172,9 +172,7 @@
             <a href="#" class="nav-list-expander"
               ><svg viewBox="0 0 24 24">
                 <use xlink:href="#svg-arrow-right"></use></svg></a
-            ><a
-              href="/files/pages/web_dev/web_dev_index/web_dev_index.html"
-              class="nav-list-link"
+            ><a href="https://monome.org/docs/norns/" class="nav-list-link"
               >web dev</a
             >
             <ul class="nav-list">
@@ -479,7 +477,7 @@
         </ul>
       </nav>
       <footer class="site-footer">
-        <a href="http://jimturnerstudio.com/">home</a>
+        <a href="https://monome.org/">monome</a>
       </footer>
     </div>
     <div class="main" id="top">
@@ -512,18 +510,309 @@
       </div>
       <div id="main-content-wrap" class="main-content-wrap">
         <div id="main-content" class="main-content" role="main">
-          <p><img src="files/images/hero_image.jpg" alt="" /></p>
           <p>
-            this website is currently under development. cheers!
-            <!-- thank you to everyone who has helped build this knowledgebase over
-            the years! see
-            <a href="https://github.com/monome/docs">github.com/monome/docs</a>
-            to contribute. e-mail
-            <code class="language-plaintext highlighter-rouge"
-              >help@monome.org</code -->
-            <!-- > or visit <a href="https://llllllll.co/">llllllll.co</a> if you see
-            needed corrections. -->
+            <img src="files/norns-grey.jpeg" alt="" />
           </p>
+          <p>
+            This is a test of this page. It is a small, portable, open-source
+            sound computer that dynamically runs scripts and DSP (Digital Signal
+            Processing), such as:
+          </p>
+          <ul>
+            <li>sample-cutter</li>
+            <li>polysynth</li>
+            <li>algorithmic drum machine</li>
+            <li>drone box</li>
+            <li>granulator</li>
+            <li>asynchronous looper</li>
+            <li>polyphasic sequencer</li>
+          </ul>
+          <p>
+            Through <em>scripts</em> written in
+            <a href="https://www.lua.org/about.html">Lua</a>, you can define the
+            behavior of its on-board rotary controls, keys, and screen, as well
+            as any connected devices. Through a large number of
+            <a href="https://monome.org/docs/norns/reference"
+              >pre-written libraries</a
+            >, norns offers a platform for charting new possibilities in
+            music-making. norns connects easily to grids, MIDI devices, USB-CV
+            interfaces, networked OSC, and other objects.
+          </p>
+          <p>
+            Using <em>engines</em> written with
+            <a href="https://supercollider.github.io/">SuperCollider</a>, you
+            can customize and create your own methods of DSP for single
+            performances or longterm exploration. Scripts choose which sound
+            engine to use and then control its parameters using simple
+            programming.
+          </p>
+          <p>
+            Edit scripts through the
+            <a href="https://monome.org/docs/norns/maiden/">maiden</a> web
+            interface over WiFi, or load norns as a network drive and use your
+            preferred development environment. Everything is stored internally
+            on the device. Once editing is done, instruments can be immediately
+            run from the onboard selector.
+          </p>
+          <p>
+            norns is designed to be changed, encouraging customization and
+            invention. We’ve created
+            <a href="https://monome.org/docs/norns/scripting"
+              >studies with lots of code examples</a
+            >
+            to help get started, or you can browse the
+            <a href="https://norns.community/"
+              >library of prebuilt instruments</a
+            >
+            made possible with the support of a vibrant international community.
+          </p>
+          <p>
+            norns is open source and continues to grow with the generous efforts
+            of many contributors.
+          </p>
+          <details open="">
+            <summary class="text-delta">sections</summary>
+            <ul id="markdown-toc">
+              <li>
+                <a href="#specifications" id="markdown-toc-specifications"
+                  >specifications</a
+                >
+              </li>
+              <li>
+                <a href="#resources" id="markdown-toc-resources">resources</a>
+              </li>
+              <li>
+                <a href="#contributing" id="markdown-toc-contributing"
+                  >contributing</a
+                >
+              </li>
+              <li>
+                <a href="#acknowledgements" id="markdown-toc-acknowledgements"
+                  >acknowledgements</a
+                >
+              </li>
+            </ul>
+          </details>
+          <h2 id="specifications">
+            <a
+              href="#specifications"
+              class="anchor-heading"
+              aria-labelledby="specifications"
+              ><svg viewBox="0 0 16 16" aria-hidden="true">
+                <use xlink:href="#svg-link"></use></svg
+            ></a>
+            specifications
+          </h2>
+          <p><strong>audio</strong></p>
+          <ul>
+            <li>
+              1/4”, 2 output / 2 input, all line level, unbalanced (use TS
+              cables).
+            </li>
+            <li>1/4” stereo headphone with gain.</li>
+          </ul>
+          <p><strong>interface</strong></p>
+          <ul>
+            <li>128 x 64 OLED, 16-level bright white huge pixels.</li>
+            <li>
+              3 endless rotary controls.
+              <ul>
+                <li>
+                  units produced in 2024+ have potentiometers with a slow turn.
+                </li>
+                <li>
+                  units produced before 2024 have encoders with a fast turn.
+                </li>
+              </ul>
+            </li>
+            <li>3 keys.</li>
+            <li>rear status LED indicating power and disk access.</li>
+          </ul>
+          <p><strong>interconnect</strong></p>
+          <ul>
+            <li>
+              4 x USB ports for devices, can be expanded with a powered USB hub.
+            </li>
+            <li>supports up to 16 MIDI devices, 4 grids, 4 arcs, 4 HID.</li>
+            <li>serial tty via USB-mini.</li>
+            <li>
+              WiFi capable (Ralink RT5370 chipset necessary for hotspot
+              functionality), adapter included.
+            </li>
+          </ul>
+          <p><strong>power</strong></p>
+          <ul>
+            <li>power/charge via USB-mini.</li>
+            <li>
+              high output USB power supply included (5.25V / 2A); US pins,
+              automatically converts 110 - 240 VAC with simple plug format
+              adapter.
+            </li>
+            <li>internal lipo battery 2250mAh.</li>
+          </ul>
+          <p><strong>processing</strong></p>
+          <ul>
+            <li>
+              all units produced before 2021 have a Compute Module 3 (CM3).
+            </li>
+            <li>
+              a-stock units produced during and after 2021 have a Compute Module
+              3+ (CM3+), a few 2021 b-stock units have CM3’s.
+              <ul>
+                <li>
+                  <a href="https://monome.org/docs/norns/help/#confirm-cm3"
+                    >follow these steps to confirm which your compute module
+                    your unit has installed</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>quad-core 1.2GHz, 1GB RAM.</li>
+            <li>storage: 4gb (CM3) / 32gb (CM3+).</li>
+            <li>CS4270 I2s audio codec (low latency).</li>
+          </ul>
+          <p><strong>os</strong></p>
+          <ul>
+            <li>Linux with realtime kernel.</li>
+          </ul>
+          <p><strong>physical</strong></p>
+          <ul>
+            <li>6.2” x 4.0” x 0.8”</li>
+            <li>1.2 lbs.</li>
+            <li>milled aluminum, hard anodized.</li>
+            <li>units produced before 2022 are grey.</li>
+            <li>units produced during and after 2022 are black.</li>
+          </ul>
+          <h2 id="resources">
+            <a
+              href="#resources"
+              class="anchor-heading"
+              aria-labelledby="resources"
+              ><svg viewBox="0 0 16 16" aria-hidden="true">
+                <use xlink:href="#svg-link"></use></svg
+            ></a>
+            resources
+          </h2>
+          <p>Semi-linear walkthrough of standard features and usability:</p>
+          <ul>
+            <li>
+              <a href="https://monome.org/docs/norns/norns-first.pdf">first</a>:
+              a quick, printable introduction.
+            </li>
+            <li>
+              <a href="https://monome.org/docs/norns/play">play</a>: a longer
+              introduction and a great starting point.
+            </li>
+            <li>
+              <a href="https://monome.org/docs/norns/wifi-files"
+                >wifi / update / files</a
+              >: network connections, norns system updates, and file transfers.
+            </li>
+            <li>
+              <a href="https://monome.org/docs/norns/maiden">maiden</a>: manage
+              projects and import scripts.
+            </li>
+            <li>
+              <a href="https://monome.org/docs/norns/community-scripts"
+                >community scripts + mods</a
+              >: learn more about the community scripts and mods generously
+              shared for norns.
+            </li>
+            <li>
+              <a href="https://monome.org/docs/norns/control-clock"
+                >control + clock</a
+              >: integrate norns with other tools (eg. MIDI controllers and
+              external synths).
+            </li>
+          </ul>
+          <p>Additional + extended knowledge:</p>
+          <ul>
+            <li>
+              <a href="https://monome.org/docs/norns/scripting">scripting</a>:
+              scripting studies, tutorials, and reference material.
+            </li>
+            <li>
+              <a href="https://monome.org/docs/norns/help">help</a>: deeper
+              device and system troubleshooting.
+            </li>
+            <li>
+              <a href="https://monome.org/docs/norns/shield">norns shield</a>:
+              information about norns DIY circuit
+            </li>
+          </ul>
+          <p>
+            Find out more about the current version
+            <a href="https://l.llllllll.co/norns">at lines</a>.
+          </p>
+          <h2 id="contributing">
+            <a
+              href="#contributing"
+              class="anchor-heading"
+              aria-labelledby="contributing"
+              ><svg viewBox="0 0 16 16" aria-hidden="true">
+                <use xlink:href="#svg-link"></use></svg
+            ></a>
+            contributing
+          </h2>
+          <p>
+            norns is the result of generous contributions by many people, and
+            the ecosystem continues to evolve. We welcome discussion and code to
+            help further the goal of an open, dynamic instrument creation
+            platform. Check out the
+            <a href="https://github.com/monome/norns">GitHub repo</a>. To try
+            out the latest changes to the code, you can read about
+            <a href="https://monome.org/docs/norns/compiling">compiling norns</a
+            >. If you have new functionality you’d like to add, there’s also a
+            guide on
+            <a href="https://monome.org/docs/norns/extending">extending norns</a
+            >.
+          </p>
+          <p>
+            If your skills include design, instruction, or proofreading, we’re
+            also always looking for help with
+            <a href="https://github.com/monome/docs">documentation</a>.
+            Collective efforts have created numerous exceptional projects over
+            the years, and there’s more to a project than just code!
+          </p>
+          <p>
+            Found a bug? Let us know. Please email us at
+            <a href="mailto:help@monome.org">help@monome.org</a> or file a
+            <a href="https://github.com/monome/norns/issues">GitHub issue</a>.
+          </p>
+          <h2 id="acknowledgements">
+            <a
+              href="#acknowledgements"
+              class="anchor-heading"
+              aria-labelledby="acknowledgements"
+              ><svg viewBox="0 0 16 16" aria-hidden="true">
+                <use xlink:href="#svg-link"></use></svg
+            ></a>
+            acknowledgements
+          </h2>
+          <p>
+            This project would not have been possible without
+            <a href="https://en.wikipedia.org/wiki/Linux">Linux</a> or
+            <a href="https://supercollider.github.io/">SuperCollider</a>
+            (currently used for DSP extensibility).
+          </p>
+          <p>
+            <code class="language-plaintext highlighter-rouge">matron</code>
+            (control system) and
+            <code class="language-plaintext highlighter-rouge">crone</code>
+            (audio system) were created by
+            <a href="https://github.com/catfact">@catfact</a>.
+            <code class="language-plaintext highlighter-rouge">maiden</code>
+            (editor) was created by
+            <a href="https://github.com/ngwese">@ngwese</a>. Each grew with
+            contributions from <a href="https://github.com/artfwo">@artfwo</a>,
+            <a href="https://github.com/antonhornquist">@jah</a>,
+            <a href="https://github.com/simonvanderveldt">@simon</a>,
+            <a href="https://github.com/ranch-verdin">@rv</a>,
+            <a href="https://github.com/pq">@pq</a>,
+            <a href="https://github.com/markwheeler">@markwheeler</a>,
+            <a href="https://github.com/csboling">@csboling</a> and many others.
+          </p>
+          <p>norns was initiated by @tehn (monome).</p>
           <hr />
           <footer>
             <p><a href="#top" id="back-to-top">back to top</a></p>

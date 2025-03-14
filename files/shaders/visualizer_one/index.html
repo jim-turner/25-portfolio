@@ -10,12 +10,17 @@
       }
       canvas {
         display: block; /* Make canvas fill the entire window */
-        width: 100vw; /* Viewport width */
-        height: 100vh; /* Viewport height */
+      }
+      #startButton {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1000; /* Ensure it's on top of the canvas */
       }
     </style>
   </head>
   <body>
+    <button id="startButton">Start Visualizer</button>
     <canvas id="visualizerCanvas"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="script.js"></script>

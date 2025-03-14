@@ -1,0 +1,27 @@
+#signature-container {
+  width: 50%; /* Default width for larger screens */
+  height: auto; /* Maintain aspect ratio */
+  margin: 50px auto; /* Center the signature */
+  padding: 10px;
+  text-align: center; /* Center the SVG inside the container */
+}
+
+#signature-svg {
+  display: inline-block; /* Center the SVG inside the container */
+  width: 100%; /* Default width for larger screens */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Media query for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  #signature-container {
+    width: 70%; /* Adjust width for tablets */
+  }
+}
+
+/* Media query for mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+  #signature-container {
+    width: 90%; /* Adjust width for mobile phones */
+  }
+}

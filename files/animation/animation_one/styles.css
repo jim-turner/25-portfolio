@@ -1,0 +1,18 @@
+body {
+  background-color: rgb(79, 193, 155);
+}
+
+.hero {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+
+.squares {
+  display: flex;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+

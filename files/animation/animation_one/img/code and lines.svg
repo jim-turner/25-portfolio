@@ -1,0 +1,23 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 577 690.38">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 9px;
+      }
+
+      .cls-2 {
+        font-size: 321px;
+        font-family: MyriadPro-Regular, Myriad Pro;
+      }
+    </style>
+  </defs>
+  <line id="vertical_line" data-name="vertical line" class="cls-1" x1="288" y1="57.06" x2="288" y2="634.06"/>
+  <line id="horizontal_line" data-name="horizontal line" class="cls-1" y1="346.06" x2="577" y2="346.06"/>
+  <text class="cls-2" transform="translate(80.74 268.68)">c</text>
+  <text class="cls-2" transform="translate(348.68 268.95)">o</text>
+  <text class="cls-2" transform="translate(57.86 610.13)">d</text>
+  <text class="cls-2" transform="translate(351.47 576.92)">e</text>
+</svg>

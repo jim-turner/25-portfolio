@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breathing Timer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .breathing-circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid;
+        margin: 2rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s ease-in-out;
+      }
+      .text-center {
+        text-align: center;
+      }
+      #instructions {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #6b7280; /* Gray 500 */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <h1 class="text-3xl font-semibold text-indigo-600 text-center mb-6">
+        Breathing Timer
+      </h1>
+      <div class="breathing-circle border-indigo-500" id="breathingCircle">
+        <p id="cycleText" class="text-xl font-medium text-gray-700">Ready</p>
+      </div>
+      <p id="instructions" class="text-center">
+        Follow the instructions and visual cues.
+      </p>
+
+      <div class="flex justify-center gap-4 mt-6">
+        <button
+          id="startButton"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
+        >
+          Start
+        </button>
+        <button
+          id="stopButton"
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
+          style="display: none"
+        >
+          Stop
+        </button>
+        <button
+          id="settingsButton"
+          class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
+        >
+          Settings
+        </button>
+      </div>
+
+      <div
+        id="settingsModal"
+        class="modal fixed z-10 inset-0 overflow-y-auto bg-black bg-opacity-50"
+        style="display: none"
+      >
+        <div
+          class="modal-content bg-white m-auto p-8 rounded-lg shadow-xl w-full max-w-md"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-semibold text-gray-800">Settings</h2>
+            <span
+              id="closeModal"
+              class="text-gray-500 hover:text-gray-800 text-2xl font-bold cursor-pointer"
+              >&times;</span
+            >
+          </div>
+          <form id="settingsForm" class="space-y-4">
+            <div>
+              <label
+                for="inhaleTime"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Inhale (seconds):</label
+              >
+              <input
+                type="number"
+                id="inhaleTime"
+                value="4"
+                required
+                min="1"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div>
+              <label
+                for="holdTime"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Hold (seconds):</label
+              >
+              <input
+                type="number"
+                id="holdTime"
+                value="0"
+                required
+                min="0"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div>
+              <label
+                for="exhaleTime"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Exhale (seconds):</label
+              >
+              <input
+                type="number"
+                id="exhaleTime"
+                value="6"
+                required
+                min="1"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div>
+              <label
+                for="holdTime2"
+                class="block text-gray-700 text-sm font-bold mb-2"
+                >Hold 2 (seconds):</label
+              >
+              <input
+                type="number"
+                id="holdTime2"
+                value="0"
+                required
+                min="0"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <button
+              type="submit"
+              class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out w-full"
+            >
+              Save Settings
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get references to DOM elements
+      const breathingCircle = document.getElementById("breathingCircle");
+      const cycleText = document.getElementById("cycleText");
+      const startButton = document.getElementById("startButton");
+      const stopButton = document.getElementById("stopButton");
+      const settingsButton = document.getElementById("settingsButton");
+      const settingsModal = document.getElementById("settingsModal");
+      const closeModal = document.getElementById("closeModal");
+      const settingsForm = document.getElementById("settingsForm");
+      const body = document.querySelector("body");
+
+      // Define breathing cycle phases and colors
+      let inhaleTime = 4;
+      let holdTime = 0;
+      let exhaleTime = 6;
+      let holdTime2 = 0;
+      let cycleInterval;
+      let isRunning = false;
+      let currentPhase = 0;
+      const phases = ["inhale", "hold", "exhale", "hold2"];
+      const colors = {
+        inhale: "rgba(56, 189, 248, 0.7)", // Light blue with opacity
+        hold: "rgba(252, 211, 77, 0.7)", // Light yellow with opacity
+        exhale: "rgba(167, 139, 250, 0.7)", // Light purple with opacity
+        hold2: "rgba(244, 114, 182, 0.7)", // Light pink with opacity
+        ready: "rgba(107, 114, 128, 0.7)", // Gray 500
+      };
+
+      let timeouts = []; // Array to store timeouts for clearing
+
+      // Function to apply styles and text for each phase
+      function applyPhaseStyles(phase) {
+        breathingCircle.style.backgroundColor = colors[phase];
+        let text = "";
+        switch (phase) {
+          case "inhale":
+            text = "Inhale";
+            breathingCircle.style.transform = "scale(1.2)"; // Expand
+            break;
+          case "hold":
+            text = "Hold";
+            breathingCircle.style.transform = "scale(1)"; // Maintain size
+            break;
+          case "exhale":
+            text = "Exhale";
+            breathingCircle.style.transform = "scale(0.8)"; // Contract
+            break;
+          case "hold2":
+            text = "Hold";
+            breathingCircle.style.transform = "scale(1)"; // Maintain size
+            break;
+          case "ready":
+            text = "Ready";
+            breathingCircle.style.backgroundColor = colors.ready;
+            breathingCircle.style.transform = "scale(1)";
+            break;
+        }
+        cycleText.textContent = text;
+      }
+
+      // Function to start the breathing cycle
+      function startCycle() {
+        if (isRunning) return;
+        isRunning = true;
+        startButton.style.display = "none";
+        stopButton.style.display = "inline-block";
+        cycleText.textContent = "Ready"; // Initial state
+        currentPhase = 0;
+
+        // Clear any existing timeouts
+        timeouts.forEach(clearTimeout);
+        timeouts = [];
+
+        function nextPhase() {
+          if (!isRunning) return; // Stop if stopped
+
+          applyPhaseStyles(phases[currentPhase]);
+          let duration;
+          switch (phases[currentPhase]) {
+            case "inhale":
+              duration = inhaleTime;
+              break;
+            case "hold":
+              duration = holdTime;
+              break;
+            case "exhale":
+              duration = exhaleTime;
+              break;
+            case "hold2":
+              duration = holdTime2;
+              break;
+          }
+
+          const timeoutId = setTimeout(() => {
+            currentPhase = (currentPhase + 1) % phases.length;
+            nextPhase(); // Call the next phase
+          }, duration * 1000);
+          timeouts.push(timeoutId); // Store timeout ID
+        }
+
+        nextPhase(); // Start the cycle
+      }
+
+      // Function to stop the breathing cycle
+      function stopCycle() {
+        isRunning = false;
+        startButton.style.display = "inline-block";
+        stopButton.style.display = "none";
+        cycleText.textContent = "Stopped";
+        breathingCircle.style.backgroundColor = colors.ready;
+        breathingCircle.style.transform = "scale(1)";
+
+        // Clear all timeouts
+        timeouts.forEach(clearTimeout);
+        timeouts = [];
+      }
+
+      // Function to open the settings modal
+      function openSettings() {
+        settingsModal.style.display = "block";
+        body.classList.add("overflow-hidden"); // Prevent scrolling
+      }
+
+      // Function to close the settings modal
+      function closeSettings() {
+        settingsModal.style.display = "none";
+        body.classList.remove("overflow-hidden"); // Allow scrolling
+      }
+
+      // Event listeners
+      startButton.addEventListener("click", startCycle);
+      stopButton.addEventListener("click", stopCycle);
+      settingsButton.addEventListener("click", openSettings);
+      closeModal.addEventListener("click", closeSettings);
+
+      // Event listener for form submission in the modal
+      settingsForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        inhaleTime = parseInt(document.getElementById("inhaleTime").value);
+        holdTime = parseInt(document.getElementById("holdTime").value);
+        exhaleTime = parseInt(document.getElementById("exhaleTime").value);
+        holdTime2 = parseInt(document.getElementById("holdTime2").value);
+        closeSettings(); // Close the modal after saving
+        if (isRunning) {
+          stopCycle();
+          startCycle();
+        }
+      });
+
+      // Ensure modal closes when clicking outside
+      window.addEventListener("click", (event) => {
+        if (event.target === settingsModal) {
+          closeSettings();
+        }
+      });
+    </script>
+  </body>
+</html>

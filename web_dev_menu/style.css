@@ -1,0 +1,65 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Light grey background for the page */
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.ereader-screen {
+  width: 90%; /* Adjust width as needed */
+  max-width: 450px; /* Max width similar to an e-reader */
+  aspect-ratio: 3 / 4; /* Approximate e-reader aspect ratio */
+  background-color: #e8e8e8; /* E-ink like background */
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.grid-container {
+  display: grid;
+  /* Create 4 equal columns */
+  grid-template-columns: repeat(4, 1fr);
+  /* Adjust gap between grid items */
+  gap: 10px 15px; /* row-gap column-gap */
+  padding: 10px; /* Padding inside the grid area */
+  flex-grow: 1; /* Allow grid to take available space */
+  overflow: hidden; /* Hide potential overflow if needed */
+}
+
+.grid-item {
+  /* Make items square - aspect-ratio is well supported now */
+  aspect-ratio: 1 / 1;
+  position: relative; /* Needed for potential absolute positioning inside, though not used here */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Background swatch styling */
+  background-size: 200px; /* Or 'cover' depending on your SVG */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.grid-item img {
+  /* Style the foreground square outline */
+  display: block;
+  width: 70%; /* Make the square smaller than the container */
+  height: 70%;
+  max-width: 100%; /* Ensure it doesn't overflow its container */
+  object-fit: contain; /* Scale SVG nicely */
+}
+
+.square-svg {
+  /* SVG square outline */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

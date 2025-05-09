@@ -1,0 +1,64 @@
+body {
+  font-family: sans-serif;
+  line-height: 1.7;
+  margin: 20px;
+  background-color: #f8f8f8;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.content-area {
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden; /* Clears the float */
+  padding: 10px;
+}
+
+.shape-hiker-left {
+  float: left;
+  width: 5%;
+  height: 400px;
+  width: 700px;
+
+  /* --- THIS IS THE KEY PART --- */
+  /* Ensure 'hiker_transparent.png' is the correct path */
+  /* AND the image file itself HAS transparency */
+  shape-outside: url("hiker_transparent.png");
+
+  shape-margin: 5px; /* The 10px space around the contour */
+
+  margin-right: 1.5em;
+  margin-bottom: 1em;
+}
+
+p {
+  color: #444;
+  text-align: justify;
+  margin-bottom: 1em;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+@media (max-width: 520px) {
+  .content-area {
+    max-width: 95%;
+    padding: 15px;
+  }
+  .shape-hiker-left {
+    float: none;
+    display: block;
+    width: 60%;
+    max-width: 180px;
+    margin: 0 auto 1.5em auto;
+  }
+  p {
+    text-align: left;
+    hyphens: none;
+  }
+}

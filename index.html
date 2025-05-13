@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <link rel="stylesheet" href="/style.css" />
     <script type="text/javascript" src="/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>index | jim.turner/studio</title>
@@ -219,14 +220,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-list-item">
-            <a href="#" class="nav-list-expander"
-              ><svg viewBox="0 0 24 24">
-                <use xlink:href="#svg-arrow-right"></use></svg></a
-            ><a href="#" class="nav-list-link"
-              >blog</a
-            >
-          </li>
+         
         </ul>
       </nav>
       <footer class="site-footer">
@@ -244,13 +238,14 @@
       </div>
       <div id="main-content-wrap" class="main-content-wrap">
         <div id="main-content" class="main-content" role="main">
-          <p><img src="files/images/camroad.svg" alt="" /></p>
+          <p><img id="camroad" src="files/images/camroad.svg" alt="" /></p>
           <p>Art, Code, and the Open Road</p>
           <p>The Dream [travel - the island, RV - Toyota Camroad, Digital Nomad - Front End Development]</p>
           <hr />
         </div>
       </div>
-      <div class="search-overlay"></div>
+      
     </div>
+    <script src="camroad.js"></script>
   </body>
 </html>
